@@ -1,5 +1,5 @@
 // pick-a-date (attribute)
-define(['jquery', "depend!libs/angular-pickadate.js/pickadate/picker.date[jquery,picker]", "depend!libs/angular-pickadate.js/pickadate/picker.time[jquery,picker]"], function ($) {
+define(['angular', 'jquery', "depend!libs/angular-pickadate.js/pickadate/picker.date[angular,jquery,picker]", "depend!libs/angular-pickadate.js/pickadate/picker.time[angular,jquery,picker]"], function (angular, $) {
     angular.module('ng').directive('pickADate', function () {
         return {
             restrict: "A",
@@ -9,6 +9,7 @@ define(['jquery', "depend!libs/angular-pickadate.js/pickadate/picker.date[jquery
                 maxDate: '='
             },
             link: function (scope, element, attrs) {
+                element = $(element);
                 element.pickadate({
                     onSet: function (e) {
                         if (scope.$$phase || scope.$root.$$phase) // we are coming from $watch or link setup
